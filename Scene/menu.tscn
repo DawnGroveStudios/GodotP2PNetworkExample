@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0xypwyf32a7e"]
+
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LobbyChat.gd" id="1_v1kfj"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/CreateLobbyBtn.gd" id="2_bswp3"]
+[ext_resource type="Script" path="res://Scene/StartButton.gd" id="2_mvlwb"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/GetLobbyBtn.gd" id="3_nadbr"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LeaveLobbyBtn.gd" id="4_eg11w"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/PlayerStatus.gd" id="5_jk3gc"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LobbyList.gd" id="6_u4yql"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P2P_ChatText" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 702.0
+offset_top = 472.0
+offset_right = 1149.0
+offset_bottom = 643.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_v1kfj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 644.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+script = ExtResource("2_mvlwb")
+
+[node name="P2P_CreateLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create Lobby"
+script = ExtResource("2_bswp3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P2P_GetLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Get Lobbies"
+script = ExtResource("3_nadbr")
+
+[node name="P2P_LeaveLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Leave Lobby
+"
+script = ExtResource("4_eg11w")
+
+[node name="P2P_PlayerStatusButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Status"
+script = ExtResource("5_jk3gc")
+
+[node name="P2P_LobbyList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 913.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 151.0
+grow_horizontal = 0
+script = ExtResource("6_u4yql")
