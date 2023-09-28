@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0xypwyf32a7e"]
+[gd_scene load_steps=9 format=3 uid="uid://d0xypwyf32a7e"]
 
 [ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LobbyChat.gd" id="1_v1kfj"]
+[ext_resource type="Script" path="res://Scene/Menu.gd" id="2_25ssg"]
 [ext_resource type="Script" path="res://addons/p2p/lobby/scenes/CreateLobbyBtn.gd" id="2_bswp3"]
 [ext_resource type="Script" path="res://Scene/StartButton.gd" id="2_mvlwb"]
 [ext_resource type="Script" path="res://addons/p2p/lobby/scenes/GetLobbyBtn.gd" id="3_nadbr"]
@@ -33,41 +34,42 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("1_v1kfj")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Menu" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 644.0
+script = ExtResource("2_25ssg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 text = "Start Game"
 script = ExtResource("2_mvlwb")
 
-[node name="P2P_CreateLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="P2P_CreateLobbyButton" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 text = "Create Lobby"
 script = ExtResource("2_bswp3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/VBoxContainer"]
 layout_mode = 2
 
-[node name="P2P_GetLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="P2P_GetLobbyButton" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 text = "Get Lobbies"
 script = ExtResource("3_nadbr")
 
-[node name="P2P_LeaveLobbyButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="P2P_LeaveLobbyButton" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 text = "Leave Lobby
 "
 script = ExtResource("4_eg11w")
 
-[node name="P2P_PlayerStatusButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="P2P_PlayerStatusButton" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
 text = "Player Status"
 script = ExtResource("5_jk3gc")
