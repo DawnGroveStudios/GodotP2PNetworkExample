@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1cd5imflg04y"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4fxk1"]
+[ext_resource type="Texture2D" uid="uid://bo8htxrhst3l0" path="res://icon.svg" id="2_caso8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkcw1"]
+size = Vector2(61.5, 70.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4fxk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_kkcw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.523438, 0.523438)
+texture = ExtResource("2_caso8")
+
+[node name="Name" type="Label" parent="."]
+offset_left = -62.0
+offset_top = 46.0
+offset_right = 58.0
+offset_bottom = 72.0
+text = "Default Name"
+horizontal_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -52.0
+offset_top = -69.0
+offset_right = 50.0
+offset_bottom = -42.0

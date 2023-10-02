@@ -1,12 +1,13 @@
 extends P2PCharacterBody2D
 
 @export var speed = 500
-
 @export var max_jumps = 2
 @export var jump_speed = 600
-var _remaining_jumps = 0
 
-var _gravity = 9.8
+@onready var player_sprite = $Sprite2D
+
+var _remaining_jumps = 0
+var _gravity = 25
 var _current_speed = 0
 
 func _ready():

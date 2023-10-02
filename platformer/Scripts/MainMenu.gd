@@ -1,11 +1,8 @@
 extends Control
 
-
-
 func _ready():
 	P2PNetwork.globalData.game_data_updated.connect(_game_data_updated)
 	P2PLobby.player_left_lobby.connect(_player_left_lobby)
-
 
 func _game_data_updated(key:String):
 	var data = P2PNetwork.globalData.get_game_data(key)

@@ -1,14 +1,7 @@
 extends Button
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pressed.connect(_button_pressed)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _button_pressed():
 	if !P2PLobby.in_lobby():
@@ -29,9 +22,12 @@ func load_game(network_id:int=-1):
 	NetLog.info("loading game...")
 	if (network_id == -1 || network_id == P2PLobby.get_id()):
 		NetworkCommands.set_connection_state(NetPeer.ConnectionStatus.LOADING)
-	var game = preload("res://game.tscn").instantiate()
-	get_tree().root.add_child(game)
+	# Destroy Main Menu Scene
+	get_tree().get_root().get_node("/root/MainMenu").queue_free()
+	# Create Game Scene
+	var GameScene = load("res://Scenes/Game.tscn").instantiate()
+	get_tree().root.add_child(GameScene)
 	# This is used to only sync players that have the same scene active
-	P2PNetwork.set_current_scene("game",game)
+	P2PNetwork.set_current_scene("game",GameScene)
 	if (network_id == -1 || network_id == P2PLobby.get_id()):
 		NetworkCommands.set_connection_state(NetPeer.ConnectionStatus.LOADED)
