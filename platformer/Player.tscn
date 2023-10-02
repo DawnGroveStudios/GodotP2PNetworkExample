@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c85qhlr33dfun"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_krbai"]
+[ext_resource type="Texture2D" uid="uid://001fd85d2wlv" path="res://icon.svg" id="2_r1ha0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn4q7"]
+size = Vector2(57.5, 60)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(84, 99)
+script = ExtResource("1_krbai")
+metadata/_edit_group_ = true
+
+[node name="Name" type="Label" parent="."]
+offset_left = -70.0
+offset_top = -85.0
+offset_right = 4.0
+offset_bottom = -62.0
+size_flags_horizontal = 4
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, -33)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("2_r1ha0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-33.75, -33)
+shape = SubResource("RectangleShape2D_mn4q7")

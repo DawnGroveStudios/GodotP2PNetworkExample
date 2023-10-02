@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://16t2jtd64f4d"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_givsj"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/GetLobbyBtn.gd" id="1_litk8"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/CreateLobbyBtn.gd" id="2_f7kdg"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/Profiles.gd" id="2_qj1ol"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/PlayerStatus.gd" id="3_v3h7m"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LeaveLobbyBtn.gd" id="4_15i3s"]
+[ext_resource type="Script" path="res://VBoxContainer2.gd" id="5_4ebdw"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LobbyList.gd" id="5_ihm06"]
+[ext_resource type="Script" path="res://StartGame.gd" id="6_lg8h7"]
+[ext_resource type="Script" path="res://addons/p2p/lobby/scenes/LobbyChat.gd" id="7_muhdo"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_givsj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="P2P_Profiles" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+script = ExtResource("2_qj1ol")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="P2P_GetLobbyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Get Lobby"
+script = ExtResource("1_litk8")
+
+[node name="P2P_CreateLobbyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Create"
+script = ExtResource("2_f7kdg")
+
+[node name="P2P_PlayerStatusButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Disconnected"
+script = ExtResource("3_v3h7m")
+
+[node name="P2P_LeaveLobbyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Leave"
+script = ExtResource("4_15i3s")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+script = ExtResource("6_lg8h7")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("5_4ebdw")
+
+[node name="LobbyData" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+
+[node name="P2P_LobbyList" type="ItemList" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+script = ExtResource("5_ihm06")
+
+[node name="P2P_ChatText" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+script = ExtResource("7_muhdo")
