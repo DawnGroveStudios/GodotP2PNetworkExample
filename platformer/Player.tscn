@@ -11,6 +11,15 @@ position = Vector2(84, 99)
 script = ExtResource("1_krbai")
 metadata/_edit_group_ = true
 
+[node name="Name" type="Label" parent="."]
+offset_left = -70.0
+offset_top = -85.0
+offset_right = 4.0
+offset_bottom = -62.0
+size_flags_horizontal = 4
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-33, -33)
 scale = Vector2(0.484375, 0.484375)

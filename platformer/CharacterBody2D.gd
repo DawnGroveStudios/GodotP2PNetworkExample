@@ -10,7 +10,9 @@ var _gravity = 9.8
 var _current_speed = 0
 
 func _ready():
+	super()
 	_remaining_jumps = max_jumps
+	$Name.text = P2PNetwork.network_data.get_current_peer().profile_name
 
 func get_input() ->Vector2:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
