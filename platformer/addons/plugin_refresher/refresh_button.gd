@@ -2,7 +2,7 @@
 extends Control
 
 const PROJECT_METADATA_SECTION = "plugin_refresher"
-const PROJECT_METADATA_KEY = "selected_plugin" 
+const PROJECT_METADATA_KEY = "selected_plugin"
 
 const EDITOR_SETTINGS_NAME_PREFIX = "refresher_plugin/"
 const EDITOR_SETTINGS_NAME_COMPACT = EDITOR_SETTINGS_NAME_PREFIX + "compact"
@@ -55,10 +55,10 @@ func _ready():
 
 	await get_tree().process_frame
 	_update_plugins_list()
-	
+
 	enable_menu.icon = list_icon
 	reset_button.icon = get_theme_icon(&"Reload", &"EditorIcons")
-	
+
 	_load_settings()
 
 	enable_menu.about_to_popup.connect(_on_enable_menu_about_to_popup)
@@ -67,7 +67,7 @@ func _ready():
 	switch_options.item_selected.connect(_on_switch_options_item_selected)
 	btn_toggle.toggled.connect(_on_btn_toggle_toggled)
 	reset_button.pressed.connect(_on_restart_button_pressed)
-	
+
 	_update_switch_options_button_look()
 	_update_children_visibility()
 	_update_button_states()
@@ -137,7 +137,7 @@ func _get_plugin_index_by_id(id: String) -> int:
 	for i in plugins.size():
 		if plugins[i].id == id: return i
 	return -1
-	
+
 func _update_plugins_list():
 	var previous_plugin_states := plugins.duplicate() as Array[PluginInfo]
 	plugins.clear()
@@ -172,7 +172,7 @@ func _update_plugin_states(remove_disabled_and_deleted_ones: bool = false):
 func _search_dir_for_plugins(relative_base_folder: String = ""):
 	var path := plugin_folder.path_join(relative_base_folder)
 	var dir := DirAccess.open(path)
-	
+
 	for subdir_name in dir.get_directories():
 		var relative_folder = relative_base_folder.path_join(subdir_name)
 		var subdir := DirAccess.open(path.path_join(subdir_name))
@@ -222,7 +222,7 @@ func _get_editor_setting(name: String, default_value: Variant = null) -> Variant
 
 func _set_editor_setting(name: String, value: Variant):
 	refresh_plugin.get_editor_interface().get_editor_settings().set_setting(name, value)
-	
+
 func _set_project_metadata(section: String, key: String, data: Variant):
 	refresh_plugin.get_editor_interface().get_editor_settings().set_project_metadata(section, key, data)
 
@@ -231,10 +231,10 @@ func _get_project_metadata(section: String, key: String, default: Variant = null
 
 func _update_enable_menu_popup():
 	_update_plugins_list()
-	
+
 	var popup = enable_menu.get_popup()
 	popup.clear()
-	
+
 	if plugins.size() > 0:
 		var there_are_deleted_plugins := false
 		for i in plugins.size():
@@ -260,9 +260,9 @@ func _update_enable_menu_popup():
 
 func _update_switch_button_popup():
 	_update_plugins_list()
-	
+
 	switch_options.clear()
-	
+
 	if plugins.size() > 0:
 		var there_are_deleted_plugins := false
 		var selected_option = -1
@@ -343,14 +343,14 @@ func _on_switch_options_button_down():
 
 func _on_btn_toggle_toggled(button_pressed):
 	var current_main_screen_bkp = current_main_screen
-	
+
 	if selected_plugin_index >= 0:
 		_set_plugin_enabled(selected_plugin_index, button_pressed)
-	
+
 	if button_pressed:
 		if current_main_screen_bkp:
 			refresh_plugin.get_editor_interface().set_main_screen_editor(current_main_screen_bkp)
-			
+
 func _on_restart_button_pressed():
 	if _is_plugin_enabled(selected_plugin_index):
 		_set_plugin_enabled(selected_plugin_index, false)
